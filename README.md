@@ -1,20 +1,20 @@
-# DebAI — Streamlit chatbot
 
-A small Streamlit-based chatbot UI that streams responses from an Ollama model.
+# 💬 DebAI — Streamlit chatbot
 
-This workspace contains a minimal app: `chatbot.py` which uses the `ollama` Python
-client to stream model responses and `streamlit` to provide a lightweight web UI.
+Welcome to DebAI — a small, friendly Streamlit chatbot that streams responses from an Ollama model. 🤖✨
 
-## Features
-- Simple Streamlit chat UI (uses `st.chat_message`).
-- Streams assistant tokens from `ollama.chat(..., stream=True, ...)`.
-- Basic session state handling for conversation history.
+This workspace contains a minimal app: `chatbot.py`, which uses the `ollama` Python client to stream model responses and `streamlit` to provide a lightweight web UI.
 
-## Requirements
+## 🚀 Features
+- ✅ Simple Streamlit chat UI (uses `st.chat_message`).
+- ⚡ Streaming assistant tokens from `ollama.chat(..., stream=True, ...)` for responsive UX.
+- 🧠 Conversation session state stored in `st.session_state` for history and continuity.
+
+## 🛠️ Requirements
 - Python 3.10+ (recommended)
 - `streamlit` and `ollama` Python packages
 
-Install the packages in your active environment (recommended: create a venv):
+Install into a virtual environment (recommended):
 
 ```powershell
 python -m venv .venv
@@ -23,45 +23,41 @@ python -m pip install --upgrade pip
 python -m pip install --upgrade streamlit ollama
 ```
 
-If you prefer not to create a venv, run the `pip install` command in your system Python.
+If you prefer not to use a venv, run the `pip install` commands in your system Python environment.
 
-## Run the app
-Start the Streamlit app from the project root:
+## ▶️ Run the app
+From the project root run:
 
 ```powershell
 streamlit run "e:\Chatbot(Infosys)\chatbot.py"
 ```
 
-Open the local URL printed by Streamlit (usually http://localhost:8501 or 8502).
+Open the Local URL printed by Streamlit (usually `http://localhost:8501` or `8502`). 🖥️
 
-## Configuration
-- The model used by the code is defined by the `MODEL` constant at the top of `chatbot.py`.
-  Change it to another model name supported by your Ollama instance if needed.
+## ⚙️ Configuration
+- The model used by the app is controlled by the `MODEL` constant at the top of `chatbot.py`.
+  Update this value to point to the model you want running in your Ollama instance.
 
-## Notes & Troubleshooting
-- If your editor (e.g. VS Code with Pylance) reports "Import 'streamlit' could not be resolved",
-  make sure the editor is using the same Python interpreter where you installed the packages.
+## 📝 Notes & Troubleshooting
+- ❗ If your editor (e.g. VS Code + Pylance) shows "Import 'streamlit' could not be resolved",
+  ensure the editor is using the same Python interpreter where you installed the packages.
 
-- If `ollama.chat(...)` fails, verify your Ollama server/agent is running and the `ollama` client
-  is configured correctly for your environment. The project assumes a local Ollama setup or
-  the client environment is properly authenticated.
+- 🔌 If `ollama.chat(...)` fails, verify your Ollama server is running and the `ollama` client is
+  configured properly. The app assumes local access or appropriate client configuration.
 
-- The project previously included a background SVG (`assets/background.svg`). That file has
-  been removed on request — the app no longer references it. If you want a background
-  or a CSS-based gradient, I can re-add a small CSS snippet or a new asset.
+- 🗑️ The project previously included a background SVG (`assets/background.svg`). That file was
+  removed on request; if you'd like a background or CSS gradient re-added, I can add one.
 
-## Development notes
-- Conversation state is stored in `st.session_state['messages']` and the streaming buffer is
-  built in `st.session_state['full_message']` while tokens are being received. The code
-  appends the final assistant message into the messages list after the streaming completes.
+## 🧪 Development notes
+- Conversation state is stored in `st.session_state['messages']` and streaming text is accumulated in
+  `st.session_state['full_message']` while tokens arrive. The final assistant message is appended to
+  the messages list after streaming completes.
 
-- If you see repeated responses, it may be caused by the model/stream emitting duplicate
-  tokens. The project contains safeguards that were experimented with; if duplication
-  persists we can reintroduce refined token/message de-duplication strategies.
+- 🔁 If you observe repeated responses, it may come from duplicate tokens emitted by the model stream.
+  We can reintroduce token/message de-duplication strategies or add logging to inspect the raw stream.
 
-## Contributing
-If you'd like changes (UI tweaks, logo, theme, robust dedupe, logging, tests), open an issue
-or tell me what to implement next and I will make the edits.
+## 🤝 Contributing
+If you'd like changes (UI tweaks, logo, theme, dedupe logic, logging, tests), open an issue or tell me what to implement next and I will make the edits. 💡
 
 ---
-Generated: README for the DebAI project.
+Generated: README for the DebAI project. ✨
